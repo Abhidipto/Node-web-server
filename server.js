@@ -1,6 +1,7 @@
 const express=require("express")
 const hbs=require("hbs")
 const fs=require("fs")
+const port = process.env.PORT || 3000
 var app=express()
 
 hbs.registerPartials(__dirname+"/views/partials")
@@ -19,13 +20,13 @@ app.use((req,resp,next)=>{
   next()
 })
 
-app.use((req,resp,next)=>{
-  resp.render("maintainance.hbs",{
-    pageTitle:"Maintainance Page",
-    content:"The site is being updated, We'll be right back"
-  })
-  next()
-})
+// app.use((req,resp,next)=>{
+//   resp.render("maintainance.hbs",{
+//     pageTitle:"Maintainance Page",
+//     content:"The site is being updated, We'll be right back"
+//   })
+//   next()
+// })
 
 
 hbs.registerHelper("getCurrentYear",()=>{
@@ -61,4 +62,6 @@ resp.render("about.hbs",{
 
 
 
-app.listen(3000)
+app.listen(port,()=>{
+  console.log(`Server is up on ${port}`)
+})
