@@ -60,6 +60,13 @@ resp.render("about.hbs",{
 })
 })
 
+app.get("/projects",(req,resp)=>{
+  resp.render("projects.hbs",{
+    pageTitle:"Projects Page",
+    content:"This page displays Projects"
+  })
+})
+
 
 
 app.listen(port,()=>{
